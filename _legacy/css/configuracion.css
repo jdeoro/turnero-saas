@@ -1,0 +1,653 @@
+/* =========================================================================
+   ESTILOS DEL MÓDULO DE CONFIGURACIÓN Y ADMINISTRACIÓN (Configuracion.aspx)
+   ========================================================================= */
+
+.config-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* 1. Header Card */
+.config-header-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.config-header-info {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.config-header-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 0.85rem;
+    background: rgba(var(--color-primary-rgb, 51, 65, 85), 0.1);
+    color: var(--color-primary, #334155);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.config-header-info h1 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.3px;
+    margin-bottom: 0.2rem;
+}
+
+.config-header-info p {
+    font-size: 0.9rem;
+    color: #64748B;
+    margin: 0;
+}
+
+.badge-pill-admin {
+    display: inline-flex;
+    align-items: center;
+    background: #F1F5F9;
+    color: #475569;
+    border: 1px solid #CBD5E1;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 0.4rem 0.9rem;
+    border-radius: 2rem;
+}
+
+/* 2. Tabs Navigation */
+.config-tabs-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid #E2E8F0;
+    padding-bottom: 0.25rem;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.85rem 1.4rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: #0F172A;
+    background: rgba(241, 245, 249, 0.7);
+}
+
+.tab-btn.active {
+    color: var(--color-primary, #334155);
+    background: #FFFFFF;
+    font-weight: 700;
+}
+
+.tab-btn.active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-primary, #334155);
+    border-radius: 3px 3px 0 0;
+}
+
+.tab-counter {
+    background: #E2E8F0;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.15rem 0.55rem;
+    border-radius: 1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.tab-btn.active .tab-counter {
+    background: rgba(var(--color-primary-rgb, 51, 65, 85), 0.15);
+    color: var(--color-primary, #334155);
+}
+
+/* 3. Tab Panes */
+.config-tab-pane {
+    display: none;
+    flex-direction: column;
+    gap: 1.25rem;
+    animation: fadeInPane 0.25s ease-out;
+}
+
+.config-tab-pane.active {
+    display: flex;
+}
+
+@keyframes fadeInPane {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.config-pane-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 0.75rem;
+    padding: 0.6rem 1rem;
+    width: 360px;
+    max-width: 100%;
+    color: #64748B;
+    transition: all 0.2s ease;
+}
+
+.search-box:focus-within {
+    border-color: var(--color-primary, #334155);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb, 51, 65, 85), 0.12);
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 0.9rem;
+    color: #0F172A;
+}
+
+.btn-primary-action {
+    background: var(--color-primary, #334155);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+}
+
+.btn-primary-action:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* 4. Table Card - Minimalista y Compacto */
+.table-responsive-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.config-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.config-table thead th {
+    background: #F8FAFC;
+    color: #475569;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 0.65rem 0.85rem;
+    border-bottom: 1px solid #E2E8F0;
+    white-space: nowrap;
+}
+
+.config-table tbody td {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.88rem;
+    color: #1E293B;
+    border-bottom: 1px solid #F1F5F9;
+    vertical-align: middle;
+}
+
+.config-table tbody tr:hover td {
+    background: #F8FAFC;
+}
+
+.config-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Badges Minimalistas */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 1rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.badge-status.activo {
+    background: #DCFCE7;
+    color: #15803D;
+}
+
+.badge-status.inactivo {
+    background: #F1F5F9;
+    color: #64748B;
+}
+
+.badge-status.pausado {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+.badge-role {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.18rem 0.55rem;
+    border-radius: 1rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.badge-role.admin {
+    background: #EDE9FE;
+    color: #6D28D9;
+}
+
+.badge-role.supervisor {
+    background: #E0E7FF;
+    color: #4338CA;
+}
+
+.badge-role.operador {
+    background: #E0F2FE;
+    color: #0369A1;
+}
+
+/* Letra de Ticket Minimalista (sin bloque de dado gigante) */
+.badge-letra {
+    display: inline-block;
+    font-family: monospace;
+    font-weight: 800;
+    font-size: 0.88rem;
+    color: var(--color-primary, #0284C7);
+    background: rgba(2, 132, 199, 0.08);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    padding: 0.12rem 0.45rem;
+    border-radius: 0.35rem;
+    line-height: 1.2;
+}
+
+/* Action Buttons Compactos */
+.table-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.3rem;
+}
+
+.btn-table-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 0.4rem;
+    border: 1px solid #E2E8F0;
+    background: #FFFFFF;
+    color: #64748B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.btn-table-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.btn-table-icon:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+    border-color: #CBD5E1;
+}
+
+.btn-table-icon.btn-toggle-active:hover {
+    color: #EF4444;
+    border-color: #FCA5A5;
+}
+
+.btn-table-icon.btn-toggle-inactive:hover {
+    color: #10B981;
+    border-color: #86EFAC;
+}
+
+/* 4.1 Barra de Paginación al Pie de Tabla */
+.table-pagination-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1rem;
+    background: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+    font-size: 0.82rem;
+    color: #64748B;
+}
+
+.pagination-info {
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.page-btn {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 0.45rem;
+    border-radius: 0.4rem;
+    border: 1px solid #CBD5E1;
+    background: #FFFFFF;
+    color: #475569;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+    color: #0F172A;
+}
+
+.page-btn.active {
+    background: var(--color-primary, #334155);
+    border-color: var(--color-primary, #334155);
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.page-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+/* 5. Modales */
+.config-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeInBackdrop 0.2s ease-out;
+}
+
+@keyframes fadeInBackdrop {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.config-modal-card {
+    background: #FFFFFF;
+    border-radius: 1.25rem;
+    width: 100%;
+    max-width: 580px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: popModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popModal {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-card-header {
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-card-header h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0;
+}
+
+.btn-close-modal {
+    background: transparent;
+    border: none;
+    font-size: 1.75rem;
+    color: #94A3B8;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.15s ease;
+}
+
+.btn-close-modal:hover {
+    color: #0F172A;
+}
+
+.modal-card-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #334155;
+}
+
+.form-group label .req {
+    color: #EF4444;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.7rem 0.95rem;
+    border: 1px solid #CBD5E1;
+    border-radius: 0.65rem;
+    font-size: 0.92rem;
+    color: #0F172A;
+    background: #FFFFFF;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary, #334155);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb, 51, 65, 85), 0.12);
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-hint {
+    font-size: 0.78rem;
+    color: #64748B;
+}
+
+.form-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #334155;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--color-primary, #334155);
+}
+
+.modal-card-footer {
+    padding: 1.25rem 1.75rem;
+    border-top: 1px solid #E2E8F0;
+    background: #F8FAFC;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.btn-cancel {
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    color: #475569;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-cancel:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.btn-submit {
+    background: var(--color-primary, #334155);
+    border: none;
+    color: #FFFFFF;
+    padding: 0.65rem 1.4rem;
+    border-radius: 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.15s ease;
+}
+
+.btn-submit:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+/* 6. Toast Stack */
+.toast-stack {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.toast-item {
+    background: #0F172A;
+    color: #FFFFFF;
+    padding: 0.85rem 1.4rem;
+    border-radius: 0.85rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: toastPop 0.25s ease-out;
+}
+
+.toast-item.success {
+    border-left: 4px solid #10B981;
+}
+
+.toast-item.error {
+    border-left: 4px solid #EF4444;
+}
+
+@keyframes toastPop {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.table-empty {
+    text-align: center;
+    padding: 3rem 1rem !important;
+    color: #94A3B8;
+    font-size: 0.95rem;
+}

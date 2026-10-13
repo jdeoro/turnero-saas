@@ -1,0 +1,34 @@
+# Dependencias
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js build
+/.next/
+/out/
+build/
+dist/
+
+# Archivos de entorno locales (NUNCA commitear credenciales)
+.env*.local
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# IDEs y SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Backups y Legacys pesados no necesarios en repo activo
+*.zip
+_backup/
+

@@ -1,0 +1,745 @@
+/* ==========================================================================
+   Estilos de la Terminal de Autoservicio (Totem)
+   Optimizados para pantalla tactil de alta resolucion (Modo Kiosco)
+   ========================================================================== */
+
+:root {
+    --totem-bg: #F1F5F9;
+    --totem-surface: #FFFFFF;
+    --totem-text-main: #0F172A;
+    --totem-text-muted: #64748B;
+    --totem-border: #E2E8F0;
+    --totem-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    --totem-shadow-lg: 0 20px 35px -5px rgba(0, 0, 0, 0.12), 0 10px 15px -5px rgba(0, 0, 0, 0.06);
+    --totem-radius-lg: 20px;
+    --totem-radius-md: 14px;
+    --totem-radius-sm: 8px;
+    --totem-accent: #0284C7;
+    --totem-accent-light: #E0F2FE;
+    --totem-success: #10B981;
+    --totem-warning: #F59E0B;
+}
+
+/* Resetear y fijar altura completa sin scroll en kiosco */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+body.totem-body {
+    background-color: var(--totem-bg);
+    color: var(--totem-text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Cabecera de la Terminal
+   ========================================================================== */
+.totem-header {
+    background: var(--totem-surface);
+    border-bottom: 2px solid var(--totem-border);
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.totem-brand {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.totem-logo {
+    height: 52px;
+    max-width: 180px;
+    object-fit: contain;
+}
+
+.totem-brand-info h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--totem-text-main);
+    letter-spacing: -0.02em;
+}
+
+.totem-brand-info p {
+    font-size: 0.85rem;
+    color: var(--totem-text-muted);
+    font-weight: 500;
+}
+
+.totem-clock-widget {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.totem-clock-time {
+    font-size: 1.75rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-primary, #0F172A);
+    line-height: 1;
+}
+
+.totem-clock-date {
+    font-size: 0.85rem;
+    color: var(--totem-text-muted);
+    font-weight: 600;
+    margin-top: 0.25rem;
+    text-transform: capitalize;
+}
+
+/* ==========================================================================
+   Contenedor Principal y Pasos
+   ========================================================================== */
+.totem-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.totem-step {
+    display: none;
+    width: 100%;
+    animation: fadeInStep 0.25s ease-out forwards;
+}
+
+.totem-step.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+@keyframes fadeInStep {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-title-group {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.step-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--totem-text-main);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.step-subtitle {
+    font-size: 1.15rem;
+    color: var(--totem-text-muted);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Paso 1: Bienvenida (Tarjetas Grandes de Acceso)
+   ========================================================================== */
+.welcome-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 460px));
+    gap: 2.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.touch-card-hero {
+    background: var(--totem-surface);
+    border: 3px solid var(--totem-border);
+    border-radius: var(--totem-radius-lg);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: var(--totem-shadow);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.touch-card-hero:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--totem-shadow-lg);
+    border-color: var(--color-primary, #0284C7);
+}
+
+.touch-card-hero:active {
+    transform: scale(0.98);
+}
+
+.hero-icon-container {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.75rem;
+    background: var(--totem-accent-light);
+    color: var(--color-primary, #0284C7);
+    transition: transform 0.2s;
+}
+
+.touch-card-hero:hover .hero-icon-container {
+    transform: scale(1.08);
+}
+
+.hero-icon-container svg {
+    width: 52px;
+    height: 52px;
+}
+
+.touch-card-hero h3 {
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    color: var(--totem-text-main);
+}
+
+.touch-card-hero p {
+    font-size: 1.05rem;
+    color: var(--totem-text-muted);
+    line-height: 1.45;
+}
+
+.hero-badge-tag {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: #E2E8F0;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+}
+
+.touch-card-hero.hero-primary .hero-badge-tag {
+    background: var(--totem-accent-light);
+    color: var(--color-primary, #0284C7);
+}
+
+/* ==========================================================================
+   Paso 2: Teclado Tactil DNI
+   ========================================================================== */
+.dni-kiosk-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+    width: 100%;
+}
+
+.dni-display-card {
+    background: var(--totem-surface);
+    border: 2px solid var(--totem-border);
+    border-radius: var(--totem-radius-md);
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.dni-display-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--totem-text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.dni-display-value {
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    font-variant-numeric: tabular-nums;
+    color: var(--totem-text-main);
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dni-display-value.placeholder {
+    color: #CBD5E1;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    font-size: 1.85rem;
+}
+
+/* Opcion de Atencion Prioritaria */
+.prioridad-toggle-bar {
+    width: 100%;
+    background: #FEF3C7;
+    border: 2px dashed #F59E0B;
+    border-radius: var(--totem-radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+.prioridad-toggle-bar input[type="checkbox"] {
+    width: 26px;
+    height: 26px;
+    accent-color: #D97706;
+    cursor: pointer;
+}
+
+.prioridad-toggle-bar label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #92400E;
+    cursor: pointer;
+    line-height: 1.3;
+}
+
+/* Cuadricula del Teclado Numerico Tactil */
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1.75rem;
+}
+
+.keypad-btn {
+    background: var(--totem-surface);
+    border: 2px solid var(--totem-border);
+    border-radius: var(--totem-radius-md);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--totem-text-main);
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.15s ease;
+}
+
+.keypad-btn:hover {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.keypad-btn:active {
+    background: #E2E8F0;
+    transform: scale(0.96);
+}
+
+.keypad-btn.action-btn {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.keypad-btn.btn-delete {
+    color: #DC2626;
+    background: #FEF2F2;
+    border-color: #FECACA;
+}
+
+.keypad-btn.btn-delete:active {
+    background: #FEE2E2;
+}
+
+.keypad-btn.btn-clear {
+    color: #64748B;
+    background: #F8FAFC;
+}
+
+/* Botonera de Navegacion Inferior */
+.kiosk-nav-buttons {
+    display: flex;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.btn-kiosk {
+    flex: 1;
+    height: 64px;
+    border-radius: var(--totem-radius-md);
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--totem-shadow);
+    transition: all 0.15s ease;
+}
+
+.btn-kiosk-back {
+    background: #FFFFFF;
+    border: 2px solid var(--totem-border);
+    color: var(--totem-text-muted);
+}
+
+.btn-kiosk-back:hover {
+    background: #F8FAFC;
+    color: var(--totem-text-main);
+}
+
+.btn-kiosk-back:active {
+    transform: scale(0.98);
+}
+
+.btn-kiosk-primary {
+    background: var(--color-primary, #0284C7);
+    color: #FFFFFF;
+}
+
+.btn-kiosk-primary:hover {
+    filter: brightness(1.08);
+}
+
+.btn-kiosk-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-kiosk-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+}
+
+/* ==========================================================================
+   Paso 3: Seleccion de Tramite / Sector
+   ========================================================================== */
+.sectors-kiosk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1080px;
+    margin-bottom: 2.5rem;
+}
+
+.sector-touch-card {
+    background: var(--totem-surface);
+    border: 3px solid var(--totem-border);
+    border-radius: var(--totem-radius-lg);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: var(--totem-shadow);
+    min-height: 190px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sector-touch-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--totem-shadow-lg);
+    border-color: var(--color-primary, #0284C7);
+}
+
+.sector-touch-card:active {
+    transform: scale(0.98);
+}
+
+.sector-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.sector-letter-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--totem-radius-sm);
+    background: var(--totem-accent-light);
+    color: var(--color-primary, #0284C7);
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sector-floor-badge {
+    background: #F1F5F9;
+    color: #475569;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid #CBD5E1;
+}
+
+.sector-touch-card h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--totem-text-main);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+}
+
+.sector-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--totem-text-muted);
+    font-weight: 600;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   Paso 4: Comprobante / Ticket Termico
+   ========================================================================== */
+.ticket-receipt-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 440px;
+    padding: 2.5rem 2rem;
+    box-shadow: var(--totem-shadow-lg);
+    border: 1px solid #E2E8F0;
+    position: relative;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Efecto de borde perforado de ticket */
+.ticket-receipt-card::before,
+.ticket-receipt-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: radial-gradient(circle, transparent, transparent 50%, #F1F5F9 50%, #F1F5F9 100%);
+    background-size: 14px 14px;
+}
+
+.ticket-receipt-card::before {
+    top: -3px;
+}
+
+.ticket-receipt-card::after {
+    bottom: -3px;
+}
+
+.ticket-receipt-header {
+    margin-bottom: 1.5rem;
+}
+
+.ticket-receipt-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--totem-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ticket-code-display {
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    color: var(--color-primary, #0F172A);
+    line-height: 1;
+    margin: 1.25rem 0;
+    font-family: 'Inter', monospace;
+}
+
+.ticket-sector-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--totem-text-main);
+    margin-bottom: 0.35rem;
+}
+
+.ticket-floor-name {
+    font-size: 1rem;
+    color: var(--totem-text-muted);
+    font-weight: 600;
+}
+
+/* Linea divisoria punteada */
+.ticket-dashed-divider {
+    border-top: 2px dashed #CBD5E1;
+    margin: 1.5rem 0;
+}
+
+.ticket-info-pills {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-pill-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-pill-item .pill-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--totem-text-muted);
+}
+
+.info-pill-item .pill-value {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--totem-text-main);
+}
+
+.ticket-queue-notice {
+    background: var(--totem-accent-light);
+    border-radius: var(--totem-radius-sm);
+    padding: 0.85rem 1rem;
+    color: #0369A1;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.ticket-instructions {
+    font-size: 0.9rem;
+    color: var(--totem-text-muted);
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* Contador de reinicio automatico */
+.countdown-box {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--totem-text-muted);
+    text-align: center;
+}
+
+.countdown-number {
+    color: var(--color-primary, #0284C7);
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+/* Barra de progreso de cuenta regresiva */
+.countdown-progress-bar {
+    width: 100%;
+    max-width: 440px;
+    height: 8px;
+    background: #E2E8F0;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-top: 0.75rem;
+}
+
+.countdown-progress-fill {
+    height: 100%;
+    background: var(--color-primary, #0284C7);
+    width: 100%;
+    transition: width 1s linear;
+}
+
+/* ==========================================================================
+   Notificaciones Toast Táctiles
+   ========================================================================== */
+.totem-toast {
+    position: fixed;
+    top: 6rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: #1E293B;
+    color: #FFFFFF;
+    padding: 1.25rem 2rem;
+    border-radius: var(--totem-radius-md);
+    box-shadow: var(--totem-shadow-lg);
+    font-size: 1.2rem;
+    font-weight: 700;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 90%;
+    text-align: center;
+}
+
+.totem-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.totem-toast.error {
+    background: #DC2626;
+}
+
+.totem-toast.success {
+    background: #16A34A;
+}
+
+/* ==========================================================================
+   Adaptabilidad para pantallas verticales (Totems Portrait 1080x1920)
+   ========================================================================== */
+@media (max-width: 768px) or (orientation: portrait) {
+    .welcome-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .step-title {
+        font-size: 1.85rem;
+    }
+
+    .keypad-btn {
+        height: 68px;
+        font-size: 1.75rem;
+    }
+
+    .dni-display-value {
+        font-size: 2.25rem;
+    }
+}

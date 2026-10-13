@@ -1,0 +1,33 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tw_gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <filter id="tw_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0284c7" flood-opacity="0.4" />
+    </filter>
+  </defs>
+  
+  <!-- Base redondeada con gradiente -->
+  <rect width="64" height="64" rx="18" fill="url(#tw_gradient)" filter="url(#tw_glow)" />
+  
+  <!-- Reflejo superior -->
+  <path d="M0 18C0 8.05888 8.05888 0 18 0H46C55.9411 0 64 8.05888 64 18V26H0V18Z" fill="white" fill-opacity="0.2" />
+
+  <!-- Ticket digital estilizado -->
+  <g transform="translate(14, 12)">
+    <!-- Cuerpo del ticket -->
+    <path d="M4 4C4 1.79086 5.79086 0 8 0H28C30.2091 0 32 1.79086 32 4V14C30.3431 14 29 15.3431 29 17C29 18.6569 30.3431 20 32 20V36C32 38.2091 30.2091 40 28 40H8C5.79086 40 4 38.2091 4 36V20C5.65685 20 7 18.6569 7 17C7 15.3431 5.65685 14 4 14V4Z" fill="white" fill-opacity="0.18" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Línea punteada de corte -->
+    <line x1="10" y1="17" x2="26" y2="17" stroke="white" stroke-width="2.5" stroke-dasharray="2 3" stroke-linecap="round"/>
+    
+    <!-- Señal de llamado (flecha / pulso) -->
+    <path d="M12 26L18 32L24 26" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Campana / foco digital -->
+    <circle cx="18" cy="8" r="2.8" fill="#38bdf8"/>
+  </g>
+</svg>
