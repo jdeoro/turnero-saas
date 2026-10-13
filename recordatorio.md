@@ -326,3 +326,32 @@ Además: confirmar versión/host/puerto reales de la conexión Navicat `localhos
   - Incorporadas clases y media queries para tablets verticales (`<= 768px`) con botones táctiles ergonómicos de 64px (`.touch-btn-lg`), teclado numérico amplio y grillas adaptables.
   - Panel de operador apilable para pantallas reducidas y agregado selector de sector interactivo en cabecera para cambio de box en caliente.
 
+### Control de Versiones y Documentación de Trazabilidad
+- **Repositorio Oficial en GitHub:** `https://github.com/jdeoro/turnero-saas.git` (Rama `main`, sincronizado).
+- **Matriz de Migración y Discriminación:** [docs/MATRIZ_MIGRACION_VS_NEXTJS.md](file:///c:/Users/Jorge/Desktop/Nexjs/turnero/docs/MATRIZ_MIGRACION_VS_NEXTJS.md) creada para identificar diferencias y mapear cualquier actualización futura que provenga del proyecto activo de Visual Studio C#.
+- **Artefacto de Despliegue Actualizado:** `turnero_deploy.zip` (10.9 MB) listo con todos los cambios de diseño, logo, 7 días y responsive tablet.
+
+---
+
+## 13. PUNTO DE RETOMA DEFINITIVO (Hoja de Ruta para Próxima Sesión)
+
+### Estado Actual del Proyecto
+1. **Producción Operativa:** `https://turnos.desarrollosweb.net.ar` funcionando con Node.js 20 Passenger en WizHosting.
+2. **Base de Datos MariaDB:** Esquema SaaS multi-tenant (`desarro2_turnosmedicos`) activo y testeado con inserciones reales (`C-001`).
+3. **Código Fuente:** 100% respaldado en local y en GitHub (`main`).
+
+### Tareas Inmediatas al Retomar:
+1. **En cPanel WizHosting (si se desea refrescar los últimos cambios visuales):**
+   - Subir / descomprimir `turnero_deploy.zip` en `public_html/turnos.desarrollosweb.net.ar`.
+   - Ejecutar en la terminal de cPanel:
+     ```bash
+     chmod -R 755 .next
+     cp -r .next/static _next && chmod -R 755 _next
+     touch tmp/restart.txt
+     ```
+2. **En phpMyAdmin (MariaDB):**
+   - Verificar si se ejecutó el `ALTER`/`CREATE OR REPLACE` del SP `sp_saas_registrar_cuenta_trial` con `INTERVAL 7 DAY` (definido en [schema_saas.sql](file:///c:/Users/Jorge/Desktop/Nexjs/turnero/db/schema_saas.sql)).
+3. **Recepción de Novedades desde Visual Studio (C#):**
+   - Cuando el usuario traiga cambios nuevos de Visual Studio, abrir y seguir la guía paso a paso de [MATRIZ_MIGRACION_VS_NEXTJS.md](file:///c:/Users/Jorge/Desktop/Nexjs/turnero/docs/MATRIZ_MIGRACION_VS_NEXTJS.md) para incorporar la lógica sin afectar el aislamiento SaaS ni la UI moderna.
+
+
